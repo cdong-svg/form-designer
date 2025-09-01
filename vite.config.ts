@@ -6,6 +6,7 @@ import path from "node:path";
 export default defineConfig(({ command }) => {
   const enableMock = command === "serve";
   return {
+    base: "/form-designer/",
     plugins: [
       vue(),
       viteMockServe({
@@ -18,6 +19,9 @@ export default defineConfig(({ command }) => {
       alias: {
         "@": path.resolve(__dirname, "src"),
       },
+    },
+    build: {
+      outDir: "docs",
     },
     server: {
       port: 5173,
